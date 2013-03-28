@@ -17,7 +17,6 @@
           <a class="brand" href="/">tryleapjs</a>
           <ul class="nav">
             <% (1..3).each do |i| %>
-
               <li <% if i == @step %>class="active"<% end %>><a href="/<%= i %>"><%= i %></a></li>
             <% end %>
           </ul>

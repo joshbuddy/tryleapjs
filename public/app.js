@@ -15,14 +15,9 @@ $(function() {
   LiveEditor.prototype.update = function() {
     try {
       eval(this.codemirror.getValue());
-      $(".error-pane").remove();
+      $(".error-pane").slideUp();
     } catch (e) {
-      if ($('.error-pane').length == 0) {
-        $(".CodeMirror").after('<div class="error-pane hide"></div>');
-        $('.error-pane').html(e.toString()).slideDown();
-      } else {
-        $('.error-pane').html(e.toString());
-      }
+      $('.error-pane').html(e.toString()).slideDown();
     }
   };
 

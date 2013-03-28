@@ -16,13 +16,13 @@
 var leap = new Leap.Controller();
 
 leap.on('connect', function() {
-  console.log("connect");
   $('.bar').html("Connected!").css('background-color', 'green').css('color', 'white');
 });
 leap.on('disconnect', function() {
-  console.log("disconnect");
   $('.bar').html("Disconnected").css('background-color', 'red').css('color', 'white');
 });
 leap.connect();
 </textarea>
+<div class="error-pane"></div>
+
 <button class="reset btn-large btn">reset</button>
