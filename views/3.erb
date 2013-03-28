@@ -1,0 +1,18 @@
+<h1>Counting fingers and toes</h1>
+<p>Lets show a quick program to show you the number of fingers and hands. Go ahead, stick you hands it.</p>
+
+<div class="bar" width="100%" style="line-height: 100px; font-size: 50px; text-align: center; height: 100px;">
+
+</div>
+
+<textarea id="main-editor">
+var leap = new Leap.Controller();
+
+leap.on('frame', function(frame) {
+  var message = frame.pointables.length + ' finger(s), ' + frame.hands.length + 'hand(s)';
+  $('.bar').html(message);
+});
+
+leap.connect();
+</textarea>
+<button class="reset btn-large btn">reset</button>

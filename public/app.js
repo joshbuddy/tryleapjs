@@ -1,16 +1,29 @@
 $(function() {
   function LiveEditor(element) {
-    this.codemirror = CodeMirror.fromTextArea(element);
     var editor = this;
-    this.el = $("#"+element.id);
-    this.el.on('mouseover', function() {
+    var el = this.el = $("#"+element.id);
+    this.codemirror = CodeMirror.fromTextArea(element);
+    this.codemirror.on('change', function() {
       editor.update();
+    });
+
+    $('.reset').on('click', function() {
+      editor.codemirror.setValue(el.val());
     });
   }
 
   LiveEditor.prototype.update = function() {
-    console.log("running script! "+this.el.val());
-    eval(this.el.val());
+    try {
+      eval(this.codemirror.getValue());
+      $(".error-pane").remove();
+    } catch (e) {
+      if ($('.error-pane').length == 0) {
+        $(".CodeMirror").after('<div class="error-pane hide"></div>');
+        $('.error-pane').html(e.toString()).slideDown();
+      } else {
+        $('.error-pane').html(e.toString());
+      }
+    }
   };
 
   var editor = new LiveEditor(document.getElementById('main-editor'));

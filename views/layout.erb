@@ -7,6 +7,7 @@
     <script src="http://local.leapmotion:8080/leap.js"></script>
     <script src="/app.js"></script>
     <link href="/codemirror.css" rel="stylesheet">
+    <link href="/app.css" rel="stylesheet">
     <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
   </head>
   <body>
@@ -16,12 +17,15 @@
           <a class="brand" href="/">tryleapjs</a>
           <ul class="nav">
             <% (1..3).each do |i| %>
+
               <li <% if i == @step %>class="active"<% end %>><a href="/<%= i %>"><%= i %></a></li>
             <% end %>
           </ul>
         </div>
       </div>
       <%= yield %>
+
+      <% if @step %><a href="/<%= @step.succ %>" class="btn-large btn btn-primary">Let's keep going!</a><% end %>
     </div>
   </body>
 </html>
