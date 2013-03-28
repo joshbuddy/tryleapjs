@@ -1,0 +1,27 @@
+<h1>Welcome to the Leap. Let's have fun.</h1>
+<p>If everything is good to go you should see a big green bar below. If its red, here are a few tips to get you started...</p>
+
+<p>First, are you currectly plugged? You should have a green icon in your desktop tray that looks like this.</p>
+<p>If it looks like this, (the red bar) you should probably click on the button below. This will kick off a bug report, which are super useful to us!</p>
+
+<h2>The leap is easy to get programming for. Let's take a look at that giant red bar above. Here is the source code for it.</h2>
+
+<p>Go ahead, please fiddle with it. If you ever want to get it back to normal, press the "reset" button below.</p>
+
+<div class="bar" width="100%" style="height: 100px;">
+
+</div>
+
+<textarea id="main-editor">
+var leap = new Leap.Controller();
+
+leap.on('connect', function() {
+  console.log("connect");
+  $('.bar').html("Connected!").css('background-color', 'green').css('color', 'white');
+});
+leap.on('disconnect', function() {
+  console.log("disconnect");
+  $('.bar').html("Disconnected").css('background-color', 'red').css('color', 'white');
+});
+leap.connect();
+</textarea>
